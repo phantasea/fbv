@@ -19,6 +19,8 @@
   - type: make install
   - enjoy...
 
+NOTE: In some cases, when the compilation throws a reference error (ld program (the linker) cann't find the "DGifGetLine" symbol) you may need to run: ./configure --libs=-lgif
+
 4. USAGE
     Just run fbv without any arguments, and a short help message
   will appear...
