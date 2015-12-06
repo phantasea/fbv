@@ -31,10 +31,10 @@
 
 #define PAN_STEPPING 20
 
-static int opt_clear = 1,
+static int opt_clear = 0,
 	   opt_alpha = 0,
 	   opt_hide_cursor = 1,
-	   opt_image_info = 1,
+	   opt_image_info = 0,
 	   opt_stretch = 0,
 	   opt_delay = 0,
 	   opt_enlarge = 0,
