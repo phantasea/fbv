@@ -344,42 +344,41 @@ identified:
 				ret = 0;
 				goto done;
 			case ' ': case 10: case 13: 
+            case 'n':
 				goto done;
-			case '>': case '.':
-				goto done;
-			case '<': case ',':
+            case 'p':
 				ret = -1;
 				goto done;
-			case 'r':
+			case 'u':
 				refresh = 1;
 				break;
-			case 'a': case 'D':
+			case 'h':
 				if(x_pan == 0) break;
 				x_pan -= i.width / PAN_STEPPING;
 				if(x_pan < 0) x_pan = 0;
 				refresh = 1;
 				break;
-			case 'd': case 'C':
+            case 'l':
 				if(x_offs) break;
 				if(x_pan >= (i.width - screen_width)) break;
 				x_pan += i.width / PAN_STEPPING;
 				if(x_pan > (i.width - screen_width)) x_pan = i.width - screen_width;
 				refresh = 1;
 				break;
-			case 'w': case 'A':
+			case 'k':
 				if(y_pan == 0) break;
 				y_pan -= i.height / PAN_STEPPING;
 				if(y_pan < 0) y_pan = 0;
 				refresh = 1;
 				break;
-			case 'x': case 'B':
+			case 'j':
 				if(y_offs) break;
 				if(y_pan >= (i.height - screen_height)) break;
 				y_pan += i.height / PAN_STEPPING;
 				if(y_pan > (i.height - screen_height)) y_pan = i.height - screen_height;
 				refresh = 1;
 				break;
-			case 'f': 
+			case 's': 
 				transform_stretch = !transform_stretch;
 				retransform = 1;
 				break;
@@ -387,7 +386,7 @@ identified:
 				transform_enlarge = !transform_enlarge;
 				retransform = 1;
 				break;
-			case 'k':
+			case 'c':
 				transform_cal = !transform_cal;
 				retransform = 1;
 				break;
@@ -395,28 +394,31 @@ identified:
 				transform_iaspect = !transform_iaspect;
 				retransform = 1;
 				break;
-			case 'p':
+			case 'o':
 				transform_cal = 0;
 				transform_iaspect = 0;
 				transform_enlarge = 0;
 				transform_stretch = 0;
 				retransform = 1;
 				break;
-			case 'n':
+			case 'R':  //rotate backward
 				transform_rotation -= 1;
 				if(transform_rotation < 0)
 					transform_rotation += 4;
 				retransform = 1;
 				break;
-			case 'm':
+			case 'r':  //rotate
 				transform_rotation += 1;
 				if(transform_rotation > 3)
 					transform_rotation -= 4;
 				retransform = 1;
 				break;
-			
+			case 'f':  //flip
+				transform_rotation += 2;
+                transform_rotation %= 4;
+				retransform = 1;
+				break;
 		}
-		
 	}
 
 done:
