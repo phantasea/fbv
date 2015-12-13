@@ -4,3 +4,5 @@ config.log
 fbv
 *.o
 *~
+tags
+.gitignore
